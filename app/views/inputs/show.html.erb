@@ -1,0 +1,186 @@
+<div>
+  <div>
+    <h1>
+      Input #<%= @the_input.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/inputs">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_input/<%= @the_input.id %>">
+          Delete input
+        </a>
+      </div>
+    </div>
+
+    <div>
+        <label for="email_body">
+          Email results
+        </label>
+
+        <textarea id="email_body" name="query_email_body" rows="3"></textarea>
+      </div>
+
+
+
+    <dl>
+      <dt>
+        Receiver name
+      </dt>
+      <dd>
+        <%= @the_input.receiver_name %>
+      </dd>
+
+      <dt>
+        Receiver company
+      </dt>
+      <dd>
+        <%= @the_input.receiver_company %>
+      </dd>
+
+      <dt>
+        Receiver email
+      </dt>
+      <dd>
+        <%= @the_input.receiver_email %>
+      </dd>
+
+      <dt>
+        Occasion
+      </dt>
+      <dd>
+        <%= @the_input.occasion %>
+      </dd>
+
+      <dt>
+        Topics
+      </dt>
+      <dd>
+        <%= @the_input.topics %>
+      </dd>
+
+      <dt>
+        Additional requests
+      </dt>
+      <dd>
+        <%= @the_input.additional_requests %>
+      </dd>
+
+      <dt>
+        Email body
+      </dt>
+      <dd>
+        <%= @the_input.email_body %>
+      </dd>
+
+      <dt>
+        Email
+      </dt>
+      <dd>
+        <%= @the_input.email_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_input.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_input.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<!--<div>
+  <div>
+    <h2>
+      Edit input
+    </h2>
+
+    <form action="/modify_input/<%= @the_input.id %>"  method="post" >
+      <div>
+        <label for="receiver_name_box">
+          Receiver name
+        </label>
+
+        <input type="text" id="receiver_name_box" name="query_receiver_name" value="<%= @the_input.receiver_name %>">
+      </div>
+
+      <div>
+        <label for="receiver_company_box">
+          Receiver company
+        </label>
+
+        <input type="text" id="receiver_company_box" name="query_receiver_company" value="<%= @the_input.receiver_company %>">
+      </div>
+
+      <div>
+        <label for="receiver_email_box">
+          Receiver email
+        </label>
+
+        <input type="text" id="receiver_email_box" name="query_receiver_email" value="<%= @the_input.receiver_email %>">
+      </div>
+
+      <div>
+        <label for="occasion_box">
+          Occasion
+        </label>
+
+        <textarea id="occasion_box" name="query_occasion"><%= @the_input.occasion %></textarea>
+      </div>
+
+      <div>
+        <label for="topics_box">
+          Topics
+        </label>
+
+        <textarea id="topics_box" name="query_topics"><%= @the_input.topics %></textarea>
+      </div>
+
+      <div>
+        <label for="additional_requests_box">
+          Additional requests
+        </label>
+
+        <textarea id="additional_requests_box" name="query_additional_requests"><%= @the_input.additional_requests %></textarea>
+      </div>
+
+      <div>
+        <label for="email_body_box">
+          Email body
+        </label>
+
+        <input type="text" id="email_body_box" name="query_email_body" value="<%= @the_input.email_body %>">
+      </div>
+
+      <div>
+        <label for="email_id_box">
+          Email
+        </label>
+
+        <input type="text" id="email_id_box" name="query_email_id" value="<%= @the_input.email_id %>">
+      </div>
+
+      <button>
+        Update input
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
