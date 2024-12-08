@@ -1,186 +1,80 @@
 <div>
-  <div>
-    <h1>
-      Generate a new email
-    </h1>
-  </div>
+  <h1>Generate a New Email</h1>
+  <hr>
+  <h2>Email Recipient Information</h2>
+
+  <form action="/insert_input" method="post">
+    <div>
+      <label for="receiver_name_box">Receiver Name</label>
+      <input type="text" id="receiver_name_box" name="query_receiver_name">
+    </div>
+
+    <div>
+      <label for="receiver_company_box">Receiver Company</label>
+      <input type="text" id="receiver_company_box" name="query_receiver_company">
+    </div>
+
+    <div>
+      <label for="receiver_email_box">Receiver Email</label>
+      <input type="text" id="receiver_email_box" name="query_receiver_email">
+    </div>
+
+    <h2>Email Body Information</h2>
+
+    <div>
+      <label for="occasion_box">Occasion</label>
+      <textarea id="occasion_box" name="query_occasion" rows="3"></textarea>
+    </div>
+
+    <div>
+      <label for="topics_box">Topics</label>
+      <textarea id="topics_box" name="query_topics" rows="3"></textarea>
+    </div>
+
+    <div>
+      <label for="additional_requests_box">Additional Requests</label>
+      <textarea id="additional_requests_box" name="query_additional_requests" rows="3"></textarea>
+    </div>
+
+    <button type="submit">Generate Email</button>
+  </form>
 </div>
 
 <hr>
 
 <div>
-  <div>
-    <h2>
-      Email recipient information
-    </h2>
-
-    <form action="/insert_input" method="post">
-      <div>
-        <label for="receiver_name_box">
-          Receiver name
-        </label>
-
-        <input type="text" id="receiver_name_box" name="query_receiver_name">
-      </div>
-
-      <div>
-        <label for="receiver_company_box">
-          Receiver company
-        </label>
-
-        <input type="text" id="receiver_company_box" name="query_receiver_company">
-      </div>
-
-      <div>
-        <label for="receiver_email_box">
-          Receiver email
-        </label>
-
-        <input type="text" id="receiver_email_box" name="query_receiver_email">
-      </div>
-
-    <h2>
-      Email body information
-    </h2>
-
-      <div>
-        <label for="occasion_box">
-          Occasion
-        </label>
-
-        <textarea id="occasion_box" name="query_occasion" rows="3"></textarea>
-      </div>
-
-      <div>
-        <label for="topics_box">
-          Topics
-        </label>
-
-        <textarea id="topics_box" name="query_topics" rows="3"></textarea>
-      </div>
-
-      <div>
-        <label for="additional_requests_box">
-          Additional requests
-        </label>
-
-        <textarea id="additional_requests_box" name="query_additional_requests" rows="3"></textarea>
-      </div>
-
-      <button>
-        Generate email
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
-<div>
-  <div>
-    <table border="1">
+  <table border="1">
+    <thead>
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Receiver name
-        </th>
-
-        <th>
-          Receiver company
-        </th>
-
-        <th>
-          Receiver email
-        </th>
-
-        <th>
-          Occasion
-        </th>
-
-        <th>
-          Topics
-        </th>
-
-        <th>
-          Additional requests
-        </th>
-
-        <th>
-          Email body
-        </th>
-
-        <th>
-          Email
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
+        <th>ID</th>
+        <th>Receiver Name</th>
+        <th>Receiver Company</th>
+        <th>Receiver Email</th>
+        <th>Occasion</th>
+        <th>Topics</th>
+        <th>Additional Requests</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Actions</th>
       </tr>
-
+    </thead>
+    <tbody>
       <% @list_of_inputs.each do |an_input| %>
-      <tr>
-        <td>
-          <%= an_input.id %>
-        </td>
-
-        <td>
-          <%= an_input.receiver_name %>
-        </td>
-
-        <td>
-          <%= an_input.receiver_company %>
-        </td>
-
-        <td>
-          <%= an_input.receiver_email %>
-        </td>
-
-        <td>
-          <%= an_input.occasion %>
-        </td>
-
-        <td>
-          <%= an_input.topics %>
-        </td>
-
-        <td>
-          <%= an_input.additional_requests %>
-        </td>
-
-        <td>
-          <%= an_input.email_body %>
-        </td>
-
-        <td>
-          <%= an_input.email_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(an_input.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(an_input.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/inputs/<%= an_input.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+        <tr>
+          <td><%= an_input.id %></td>
+          <td><%= an_input.receiver_name %></td>
+          <td><%= an_input.receiver_company %></td>
+          <td><%= an_input.receiver_email %></td>
+          <td><%= an_input.occasion %></td>
+          <td><%= an_input.topics %></td>
+          <td><%= an_input.additional_requests %></td>
+          <td><%= time_ago_in_words(an_input.created_at) %> ago</td>
+          <td><%= time_ago_in_words(an_input.updated_at) %> ago</td>
+          <td>
+            <a href="/inputs/<%= an_input.id %>">Show Details</a>
+          </td>
+        </tr>
       <% end %>
-    </table>
-  </div>
+    </tbody>
+  </table>
 </div>
-
-<hr>

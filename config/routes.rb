@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+get("/", { :controller => "inputs", :action => "index"})
   # Routes for the Input resource:
 
   # CREATE
