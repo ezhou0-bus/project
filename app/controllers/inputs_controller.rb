@@ -22,10 +22,18 @@ class InputsController < ApplicationController
       additional_requests: params.fetch("query_additional_requests")
     )
 
-    if the_input.save
-      redirect_to "/inputs", notice: "Input created successfully."
+    if the_input.valid?
+      the_input.save
+
+
+      # create api response 
+      system_message = Message.new 
+      # call api to get message 
+
+
+      redirect_to "/inputs/#{the_input.id}", notice: "Input created successfully."
     else
-      redirect_to "/inputs", alert: the_input.errors.full_messages.to_sentence
+      redirect_to "/inputs#{the_input.id}", alert: the_input.errors.full_messages.to_sentence
     end
   end
 

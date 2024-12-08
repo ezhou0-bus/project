@@ -4,6 +4,16 @@
   <a href="/inputs">Go Back</a>
   <a href="/delete_input/<%= @the_input.id %>">Delete Input</a>
 
+<div>
+<dt> <h2>Email result</h2></dt>
+<dd>email output goes here</dd>
+    <!--  <label for="email_result">Email Result</label>
+      <textarea id="email_result" name="query_email_result" rows="3"></textarea>
+    </div> -->
+<hr>
+
+<hr>
+
   <dl>
     <dt>Receiver Name</dt>
     <dd><%= @the_input.receiver_name %></dd>
@@ -30,3 +40,31 @@
     <dd><%= time_ago_in_words(@the_input.updated_at) %> ago</dd>
   </dl>
 </div>
+
+
+<hr>
+<%= client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))%>
+
+<%# Prepare an Array of previous messages
+message_list = [
+  {
+    "role" => "system",
+    "content" => "You are a helpful assistant who talks like Shakespeare."
+  },
+  {
+    "role" => "user",
+    "content" => "Hello! What are the best spots for pizza in Chicago?"
+  }
+]
+
+# Call the API to get the next message from GPT
+api_response = client.chat(
+  parameters: {
+    model: "gpt-3.5-turbo",
+    messages: message_list
+  }
+)
+
+
+%>
+<div style="height: 500px"></div>

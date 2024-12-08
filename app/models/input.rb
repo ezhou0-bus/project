@@ -15,4 +15,5 @@
 #  email_id            :integer
 #
 class Input < ApplicationRecord
+  belongs_to :email
 end

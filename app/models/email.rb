@@ -9,4 +9,5 @@
 #  updated_at     :datetime         not null
 #
 class Email < ApplicationRecord
+  has_many  :inputs, dependent: :destroy
 end
