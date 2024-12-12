@@ -5,11 +5,11 @@
   <a href="/delete_input/<%= @the_input.id %>">Delete Input</a>
 
 <div>
-<dt> <h2>Email result</h2></dt>
+<dt> <h2>Email Output</h2></dt>
 <dd>email output goes here</dd>
-    <!--  <label for="email_result">Email Result</label>
-      <textarea id="email_result" name="query_email_result" rows="3"></textarea>
-    </div> -->
+    <label for="email_output">Email Output</label>
+      <textarea id="email_output" name="query_email_output" rows="3"></textarea>
+    </div> 
 <hr>
 
 <hr>
@@ -45,26 +45,21 @@
 <hr>
 <%= client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))%>
 
-<%# Prepare an Array of previous messages
-message_list = [
-  {
-    "role" => "system",
-    "content" => "You are a helpful assistant who talks like Shakespeare."
-  },
-  {
-    "role" => "user",
-    "content" => "Hello! What are the best spots for pizza in Chicago?"
-  }
-]
+<%# Prepare an array of previous messages %>
+  <% message_list = [
+    { "role" => "system", "content" => "You are a helpful assistant who talks like Shakespeare." },
+    { "role" => "user", "content" => "Hello! What are the best spots for pizza in Chicago?" }
+  ] %>
 
-# Call the API to get the next message from GPT
-api_response = client.chat(
-  parameters: {
-    model: "gpt-3.5-turbo",
-    messages: message_list
-  }
-)
+  <% api_response = client.chat(
+    parameters: {
+      model: "gpt-3.5-turbo",
+      messages: message_list
+    }
+  ) %>
 
+  <h2>AI Response</h2>
+  <p><%= api_response["choices"]&.dig(0, "message", "content") || 'No response available' %></p>
 
-%>
-<div style="height: 500px"></div>
+  <div style="height: 50px"></div> <!-- Reduced for cleaner layout -->
+</div>

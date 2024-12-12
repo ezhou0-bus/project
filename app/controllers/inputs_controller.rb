@@ -28,6 +28,9 @@ class InputsController < ApplicationController
 
       # create api response 
       system_message = Message.new 
+      system_message.input_id = the_input.id
+      system_message.role = "system"
+      system_message.body = "You are a Master of Business Administration student at a top US business school. Write a professional and eloquent thank you email to recruiters. Use #{the_input.receiver_name} as the receiver's name in email body, use #{the_input.receiver_company} as the receiver's company in email body. Incorporate #{the_input.occasion} as reference for the occasion of interaction between the user and the receiver. Use #{the_input.topics} as reference for conversation topics covered between the user and the receiver and express gratitude for specific learnings. Use #{the_input.additional_requests} as reference for potential requests to receiver to include in the email body. Replace all transition words and conjunctions in the sentences with the most basic and commonly used ones. Use simple expressions, avoiding complex vocabulary. Ensure the logical connections between sentences are clear."
       # call api to get message 
 
 
